@@ -17,7 +17,7 @@ const logEntrySchema = new Schema ({
     comments: String,
     image: String,
     rating: {
-        type: number,
+        type: Number,
         min: 0,
         max: 10,
         default: 0
@@ -35,11 +35,10 @@ const logEntrySchema = new Schema ({
     visitDate: {
         required: true,
         type: Date,
-
     }
 }, {
     timestamps: true,
-    
+
 });
 
 const LogEntry = mongoose.model('LogEntry', logEntrySchema)
