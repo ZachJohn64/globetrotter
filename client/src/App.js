@@ -56,7 +56,10 @@ const App = () => {
                   longitude={entry.longitude}
                   closeButton={true}
                   closeOnClick={false}
-                  onClose={() => this.setState({showPopup: false})}
+                  onClose={() => setShowPopup({
+                    ...showPopup,
+                    [entry._id]: false
+                  })}
                   anchor="top" >
                   <div>
                     <h3>{entry.title}</h3>
