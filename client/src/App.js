@@ -11,9 +11,9 @@ const App = () => {
   const [viewport, setViewport] = useState({
     width: '100vw',
     height: '100vh',
-    latitude: 0,
-    longitude: 0,
-    zoom: 1
+    latitude: 30,
+    longitude: -18,
+    zoom: 2
   });
 
   useEffect(() => {

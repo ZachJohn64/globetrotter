@@ -23,5 +23,21 @@ body {
 }
 
 .popup {
-  max-width: 375px;
+  width: 40vw;
+  padding: 0.75rem;
+}
+
+.entry-form label, 
+.entry-form input, 
+.entry-form textarea, 
+.entry-form button {
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+  display: block;
+  width: 100%;
+}
+
+.entry-form button {
+  margin-top: 22px;
+  margin-left: 2px;
 }
