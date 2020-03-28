@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 import { listLogEntries } from './API';
+import LogEntryForm from './LogEntryForm'
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
@@ -125,9 +126,7 @@ const App = () => {
               onClose={() => setAddEntryLocation(null)}
               anchor="top" >
               <div className="popup">
-                <h3>Add your new log entry</h3>
-                <p>{addEntryLocation.comments}</p>
-                <small>Visited On: {new Date(addEntryLocation.visitDate).toLocaleDateString()}</small>
+                <LogEntryForm />
               </div>
             </Popup>
           </>
