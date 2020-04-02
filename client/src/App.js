@@ -16,11 +16,13 @@ const App = () => {
     zoom: 2
   });
 
+  const getEntries = async () => {
+    const logEntries = await listLogEntries();
+    setLogEntries(logEntries); 
+  };
+
   useEffect(() => {
-    (async () => {
-      const logEntries = await listLogEntries();
-      setLogEntries(logEntries);
-    })();    
+    getEntries();    
   }, []);
 
   const showAddMarkerPopup = (event) => {
@@ -28,7 +30,7 @@ const App = () => {
     setAddEntryLocation({
       latitude,
       longitude
-    })
+    }) 
   }
 
   return (
@@ -81,7 +83,9 @@ const App = () => {
                   <div className="popup">
                     <h3>{entry.title}</h3>
                     <p>{entry.comments}</p>
+                    <p>{entry.rating}</p>
                     <small>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</small>
+                    { entry.image ? <img src={entry.image} alt={entry.title}/> : null }
                   </div>
                 </Popup>
               ) : null
@@ -126,7 +130,11 @@ const App = () => {
               onClose={() => setAddEntryLocation(null)}
               anchor="top" >
               <div className="popup">
-                <LogEntryForm />
+                <LogEntryForm onClose={() => {
+                  setAddEntryLocation(null);
+                  getEntries();
+                }}              
+                              location={addEntryLocation} />
               </div>
             </Popup>
           </>
