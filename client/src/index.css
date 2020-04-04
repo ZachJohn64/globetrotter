@@ -28,7 +28,7 @@ body {
 
 .popup {
   width: 30vw;
-  height: 50vh;
+  max-height: 50vh;
   padding: 0.75rem;
   z-index: 1;
 }
