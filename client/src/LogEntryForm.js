@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { createLogEntry } from './API';
 const LogEntryForm = ({ location, onClose }) => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState('');
     const { register, handleSubmit } = useForm();
 
     const onSubmit = async (data) => {
@@ -24,6 +24,8 @@ const LogEntryForm = ({ location, onClose }) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
             { error ? <h3 className="error">{error}</h3> : null }
+            <label htmlFor="apiKey">API KEY</label>
+            <input type="password" name="apiKey" required ref={register}/>
             <label htmlFor="title">Title</label>
             <input name="title" required ref={register}/>
             <label htmlFor="rating">Rating</label>

@@ -5,12 +5,21 @@ export async function listLogEntries() {
     return response.json();
 }
 export async function createLogEntry(entry) {
+    const apiKey = entry.apiKey;
+    delete entry.apiKey;
     const response = await fetch(`${API_URL}/api/logs`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify(entry),
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'X_API_KEY': apiKey, 
+      },
+      body: JSON.stringify(entry),
     });
-    return response.json();
-}
+    const json = await response.json();
+    if (response.ok) {
+        return json;
+      }
+      const error = new Error(json.message);
+      error.response = json;
+      throw error;
+    }

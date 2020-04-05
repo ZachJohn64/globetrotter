@@ -27,8 +27,8 @@ body {
 }
 
 .popup {
-  width: 30vw;
-  max-height: 50vh;
+  width: 20vw;
+  height: 100%;
   padding: 0.75rem;
   z-index: 1;
 }
@@ -44,7 +44,7 @@ body {
 .entry-form input, 
 .entry-form textarea, 
 .entry-form button {
-  font-size: 1.8rem;
+  font-size: 1rem;
   margin: 0.5rem 0;
   display: block;
   width: 100%;
